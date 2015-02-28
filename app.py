@@ -24,7 +24,7 @@ def respond():
 	if jmap.get(question) == None:
 		raise Exception("question not found in jeopardy: %s" % question)
 	else:
-		resp.message("What is %s?" % (jmap['question']))
+		resp.message("What is %s?" % (jmap[question]))
 		return Response(str(resp), mimetype='text/xml')
 
 if __name__ == "__main__":
