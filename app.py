@@ -16,14 +16,12 @@ with open("jeopardy.csv") as f:
 def respond():
 	resp = twilio.twiml.Response()
 
-	repr(request.values.get('Body'))
-
 	if request.values.get('Body'):
 		question = request.values.get('Body').split("\n")[-1]
 	else:
 		raise Exception("question cannot be parsed: %s" % request.values.get('Body'))
 
-	if jmap.get('question') == None:
+	if jmap.get(question) == None:
 		raise Exception("question not found in jeopardy: %s" % question)
 	else:
 		resp.message("What is %s?" % (jmap['question']))
