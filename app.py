@@ -19,10 +19,10 @@ def respond():
 	if request.values.get('Body'):
 		question = request.values.get('Body').split("\n")[-1]
 	else:
-		return "question cannot be parsed: %s" % request.values.get('Body')
+		raise Exception("question cannot be parsed: %s" % request.values.get('Body'))
 
 	if jmap.get('question') == None:
-		return "question not found in jeopardy: %s" % question
+		raise Exception("question not found in jeopardy: %s" % question)
 	else:
 		resp.message("What is %s?" % (jmap['question']))
 		return Response(str(resp), mimetype='text/xml')
