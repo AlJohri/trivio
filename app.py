@@ -16,6 +16,8 @@ with open("jeopardy.csv") as f:
 def respond():
 	resp = twilio.twiml.Response()
 
+	repr(request.values.get('Body'))
+
 	if request.values.get('Body'):
 		question = request.values.get('Body').split("\n")[-1]
 	else:
