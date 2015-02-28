@@ -10,7 +10,7 @@ jmap = {}
 with open("jeopardy.csv") as f:
 	reader = csv.DictReader(f)
 	for row in reader:
-		jmap[row['clue']] = row['answer']
+		jmap[row['clue'] + "."] = row['answer']
 
 @app.route("/", methods=['GET', 'POST'])
 def respond():
